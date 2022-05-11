@@ -23,7 +23,7 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <div class="options">
-        <img src="./img/list.png" alt="favorite" title="Tus favoritos">
+        <img class="favorite-icon" src="./img/list.png" alt="favorite" title="Tus favoritos">
         <img src="./img/logout.png" alt="logout" title="Salir">
         <i class="fa-solid fa-magnifying-glass" title="Buscar"></i>
       </div>
@@ -46,73 +46,24 @@
         <img>
       </div>
       <div class="modal-info">
-        <h3 class="modal-info__title">NOMBRE NOMBRE NOMBRE NOMBRE</h3>
+        <h3 class="modal-info__title"></h3>
         <div class="modal-info__extras">
-          <span class="modal-info__year">2022</span>
-          <span class="modal-minyear">13+</span>
-          <span class="modal-info__time">120min</span>
+          <span class="modal-info__year"></span>
+          <span class="modal-minyear"></span>
+          <span class="modal-info__time"></span>
         </div>
-        <p class="modal-info__desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, corporis. Recusandae odio mollitia, nemo voluptatum, quidem neque ea officia incidunt fugiat, alias nulla id facere exercitationem excepturi quasi. Id, sunt.
-        </p>
+        <p class="modal-info__desc"></p>
+        <p class="modal-info__actors"></p>
       </div>
     </div>
   </section>
 
   <!------- Favorites --------->
   <section class="favorites">
-    <h2 class="sub-title">Tus favoritos</h2>
-    <div class="container-favorite">
-      <div class="favorite">
-        <div class="modal-poster">
-          <img>
-        </div>
-        <div class="modal-info">
-          <h3 class="modal-info__title">NOMBRE NOMBRE NOMBRE NOMBRE</h3>
-          <div class="modal-info__extras">
-            <span class="modal-info__year">2022</span>
-            <span class="modal-minyear">13+</span>
-            <span class="modal-info__time">120min</span>
-          </div>
-          <p class="modal-info__desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, corporis. Recusandae odio mollitia, nemo voluptatum, quidem neque ea officia incidunt fugiat, alias nulla id facere exercitationem excepturi quasi. Id, sunt.
-          </p>
-        </div>
-      </div>
-
-      <div class="favorite">
-        <div class="modal-poster">
-          <img>
-        </div>
-        <div class="modal-info">
-          <h3 class="modal-info__title">NOMBRE NOMBRE NOMBRE NOMBRE</h3>
-          <div class="modal-info__extras">
-            <span class="modal-info__year">2022</span>
-            <span class="modal-minyear">13+</span>
-            <span class="modal-info__time">120min</span>
-          </div>
-          <p class="modal-info__desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, corporis. Recusandae odio mollitia, nemo voluptatum, quidem neque ea officia incidunt fugiat, alias nulla id facere exercitationem excepturi quasi. Id, sunt.
-          </p>
-        </div>
-      </div>
-
-      <div class="favorite">
-        <div class="modal-poster">
-          <img>
-        </div>
-        <div class="modal-info">
-          <h3 class="modal-info__title">NOMBRE NOMBRE NOMBRE NOMBRE</h3>
-          <div class="modal-info__extras">
-            <span class="modal-info__year">2022</span>
-            <span class="modal-minyear">13+</span>
-            <span class="modal-info__time">120min</span>
-          </div>
-          <p class="modal-info__desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, corporis. Recusandae odio mollitia, nemo voluptatum, quidem neque ea officia incidunt fugiat, alias nulla id facere exercitationem excepturi quasi. Id, sunt.
-          </p>
-        </div>
-      </div>
+    
+    <div class="container-favorites">
+      <span class="fa-solid fa-times"></span>
+      <h2 class="sub-title">Tus favoritos: <span class="cantidad-favoritos"></span></h2>
     </div>
   </section>
 
@@ -127,26 +78,24 @@
       <h2 class="movie-title"></h2>
       <div class="movie-options">
         <i class="fa-regular fa-star" title="Favoritos"></i>
+        <!-- <i id="star-select" class="fa-solid fa-star" title="Quitar favoritos"></i> -->
         <i class="fa-solid fa-circle-info" title="Información"></i>
       </div>
     </div>
   </template>
 
+
   <template id="favorite-template">
     <div class="favorite">
-      <div class="modal-poster">
+      <div class="favorite-poster">
         <img>
       </div>
-      <div class="modal-info">
-        <h3 class="modal-info__title">NOMBRE NOMBRE NOMBRE NOMBRE</h3>
-        <div class="modal-info__extras">
-          <span class="modal-info__year">2022</span>
-          <span class="modal-minyear">13+</span>
-          <span class="modal-info__time">120min</span>
+      <div class="favorite-info">
+        <h3 class="favorite-info__title"></h3>
+        <div class="favorite-options">
+          <i class="fa-solid fa-circle-info" title="Información"></i>
+          <i class="fa-solid fa-trash-can"></i>
         </div>
-        <p class="modal-info__desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, corporis. Recusandae odio mollitia, nemo voluptatum, quidem neque ea officia incidunt fugiat, alias nulla id facere exercitationem excepturi quasi. Id, sunt.
-        </p>
       </div>
     </div>
   </template>
