@@ -15,7 +15,6 @@ const setModal = (moveId) => {
 const listenerModal = () => {
   //desactiva la vista del modal haciendo click fuera del contenido de él;
   infoModal.addEventListener("click", e => {
-    console.log(e.target)
     if(e.target.classList.contains("active")){
       infoModal.classList.remove("active");
     }

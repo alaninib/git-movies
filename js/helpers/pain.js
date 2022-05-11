@@ -28,7 +28,6 @@ const paintMovie = (movieData) => {
 }
 
 const paintModal = (movieData) => {
-  console.log(movieData)
   let {Actors: actors, Plot: plot, Runtime: runtime, Year:year,
   Title:title, Rated:rated, Poster:poster} = movieData;
   poster = poster.includes("N/A") ? "../img/default.png" : poster;

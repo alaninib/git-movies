@@ -20,7 +20,7 @@ const getDataMovies = (titleInput) => {
   })
 }
 
-!__TENGO que validar que los items de las siguientes busquedas coincidan con los del carrito para marcarlos como favoritos
+/* !__TENGO que validar que los items de las siguientes busquedas coincidan con los del carrito para marcarlos como favoritos */
 
 const listenerResult = () => {
   containerMovie.addEventListener("click", e => {
