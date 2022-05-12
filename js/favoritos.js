@@ -3,13 +3,14 @@
 import { setModal } from "./modal.js";
 import { paintFavorites } from "./helpers/pain.js";
 import { saveFavorites, getFavoritesMovies } from "./helpers/storage.js";
+import { notSelectFavorite } from "./resultManage.js";
 
 const favorites = document.querySelector(".favorites");
 const cantidadFavoritos = document.querySelector(".cantidad-favoritos");
 const favoriteIcon = document.querySelector("header .options .favorite-icon");
 let favoritesMovies = [];
 
-//favoritos iniciales (guardados en sesiones anteriores)
+//Trae las peliculas favoritas guardados en sesiones anteriores;
 const setInitialFavorites = () => {
   favoritesMovies = getFavoritesMovies();
   if(favoritesMovies.length > 0){
@@ -19,14 +20,6 @@ const setInitialFavorites = () => {
   }
 }
 
-//desmarca los nodos que no estan en la lista de favoritos
-const notSelectFavorite = (idMovie) => {
-  document.querySelectorAll(".movie .fa-regular").forEach( item => {
-    if(item.dataset.id === idMovie && item.classList.contains("active")){
-      item.classList.remove("active");
-    }
-  })
-}
 
 //remueve el nodo de favorito
 const removeNodoItem = (idMovie) => {
@@ -42,7 +35,7 @@ const deleteItemFavorito = (idMovie) => {
   removeNodoItem(idMovie);
   notSelectFavorite(idMovie);
   setCountFavoritos();
-  //si no queda ningun favorito, se desactiva la vista del icono y de la section
+  //si no queda ningun favorito, se desactiva la vista del icono favoritos (header) y de la section favorites
   if(favoritesMovies.length < 1) {
     favorites.classList.remove("active");
     favoriteIcon.classList.remove("active");
@@ -54,7 +47,7 @@ const setCountFavoritos = () => {
   cantidadFavoritos.textContent = favoritesMovies.length;
 }
 
-//crea el favorito favorito
+//crea el favorito, lo envia a pintar, guardar en el localstorage y setea la cantidad de favoritos;
 const setFavorite = (movie) => {
   let element = movie.parentNode.parentNode;
   let movieObj = {
@@ -72,7 +65,7 @@ const setFavorite = (movie) => {
 //escuchadores de favoritos
 const listenerFavorites = () => {
   favorites.addEventListener("click", e => {
-    if(e.target.classList.contains(".favorites"))favorites.classList.remove("active");
+    if(e.target.classList.contains("favorites"))favorites.classList.remove("active");
     if(e.target.classList.contains("fa-times")) favorites.classList.remove("active");
     if(e.target.classList.contains("fa-circle-info")) setModal(e.target.dataset.id);
     if(e.target.classList.contains("fa-trash-can")) deleteItemFavorito(e.target.dataset.id);
@@ -81,4 +74,4 @@ const listenerFavorites = () => {
 
 
 
-export { setFavorite, listenerFavorites, setInitialFavorites };
+export { setFavorite, listenerFavorites, setInitialFavorites, deleteItemFavorito};

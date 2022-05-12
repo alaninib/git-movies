@@ -15,7 +15,3 @@ const setMain = (
     listenerFavorites();
     setInitialFavorites();
 })()
-
-
-
-

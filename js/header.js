@@ -1,6 +1,5 @@
 "use strict"
 
-import { paintMovie, cleanContanerMovie } from "./helpers/pain.js";
 import { getDataMovies } from "./resultManage.js";
 
 const lupaNav = document.querySelector("header .options .fa-magnifying-glass");
@@ -11,10 +10,6 @@ const favoriteIcon = document.querySelector(".favorite-icon");
 const favorites = document.querySelector(".favorites");
 let titleToSearch = document.querySelector("header .search input");
 
-//envia a pintar
-const sendToPaint = (iterable, destinFunction) => {
-  iterable.forEach(item => destinFunction(item))
-}
 
 //seteador de error
 const setError = (msj) => {
@@ -29,7 +24,7 @@ const sendTitle = () => {
   getDataMovies(titleToSearch.value.trim());
 }
 
-//validacion del input de ttulo de la pélicula
+//validacion del input de título de la pélicula
 const validaInputTitle = () => {
   let status = true;
   if(titleToSearch.value.trim() === ""){

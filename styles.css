@@ -210,11 +210,12 @@ nav{
 
 .container-movie{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 5.5fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1rem;
 }
 
 .movie{
+  /* width: 25rem; */
   position: relative;
   overflow: hidden;
   border-radius: .5rem;
@@ -550,6 +551,10 @@ nav{
 
   .modal-info__desc{
     line-height: 1.5rem;
+  }
+
+  .movie{
+    width:100%;
   }
 
 }
