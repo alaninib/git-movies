@@ -8,148 +8,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!--stylesheet-->
   <link rel="stylesheet" href="./styles.css">
-  <title>Practica 2</title>
+  <title>Peliculas</title>
 </head>
 <body>
-
-  <header>
-    <nav>
-      <div class="logo">
-        <img src="./img/logo.png" alt="logo">
-        <a href="#">find<span>Movies</span></a>
+  <section>
+    <form>
+      <div class="form-group">
+        <input type="text" class="user" name="user" id="user" placeholder="ingrse usuario..." required>
       </div>
-      <div class="search">
-        <input type="search" name="title-movie" placeholder="ingrese título a buscar... ">
-        <i class="fa-solid fa-magnifying-glass"></i>
+      <div class="form-group">
+        <input type="password" class="pass" name="password" id="password" required>
       </div>
-      <div class="options">
-        <img src="./img/list.png" alt="favorite" title="Tus favoritos">
-        <img src="./img/logout.png" alt="logout" title="Salir">
-        <i class="fa-solid fa-magnifying-glass" title="Buscar"></i>
-      </div>
-    </nav>
-    <p class="msjError"></p>
-  </header>
+      <button class="btn" type="submit">Ingresar</button>
+    </form>
 
-  <!-------- movies -------->
-
-  <section class="result-movies">
-    <h2 class="sub-title">Tus resultados</h2>
-    <div class="container-movie">
-    </div>
   </section>
 
-  <!---------- modal ------------>
-  <section class="info-modal">
-    <div class="modal">
-      <div class="modal-poster">
-        <img>
-      </div>
-      <div class="modal-info">
-        <h3 class="modal-info__title">NOMBRE NOMBRE NOMBRE NOMBRE</h3>
-        <div class="modal-info__extras">
-          <span class="modal-info__year">2022</span>
-          <span class="modal-minyear">13+</span>
-          <span class="modal-info__time">120min</span>
-        </div>
-        <p class="modal-info__desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, corporis. Recusandae odio mollitia, nemo voluptatum, quidem neque ea officia incidunt fugiat, alias nulla id facere exercitationem excepturi quasi. Id, sunt.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!------- Favorites --------->
-  <section class="favorites">
-    <h2 class="sub-title">Tus favoritos</h2>
-    <div class="container-favorite">
-      <div class="favorite">
-        <div class="modal-poster">
-          <img>
-        </div>
-        <div class="modal-info">
-          <h3 class="modal-info__title">NOMBRE NOMBRE NOMBRE NOMBRE</h3>
-          <div class="modal-info__extras">
-            <span class="modal-info__year">2022</span>
-            <span class="modal-minyear">13+</span>
-            <span class="modal-info__time">120min</span>
-          </div>
-          <p class="modal-info__desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, corporis. Recusandae odio mollitia, nemo voluptatum, quidem neque ea officia incidunt fugiat, alias nulla id facere exercitationem excepturi quasi. Id, sunt.
-          </p>
-        </div>
-      </div>
-
-      <div class="favorite">
-        <div class="modal-poster">
-          <img>
-        </div>
-        <div class="modal-info">
-          <h3 class="modal-info__title">NOMBRE NOMBRE NOMBRE NOMBRE</h3>
-          <div class="modal-info__extras">
-            <span class="modal-info__year">2022</span>
-            <span class="modal-minyear">13+</span>
-            <span class="modal-info__time">120min</span>
-          </div>
-          <p class="modal-info__desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, corporis. Recusandae odio mollitia, nemo voluptatum, quidem neque ea officia incidunt fugiat, alias nulla id facere exercitationem excepturi quasi. Id, sunt.
-          </p>
-        </div>
-      </div>
-
-      <div class="favorite">
-        <div class="modal-poster">
-          <img>
-        </div>
-        <div class="modal-info">
-          <h3 class="modal-info__title">NOMBRE NOMBRE NOMBRE NOMBRE</h3>
-          <div class="modal-info__extras">
-            <span class="modal-info__year">2022</span>
-            <span class="modal-minyear">13+</span>
-            <span class="modal-info__time">120min</span>
-          </div>
-          <p class="modal-info__desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, corporis. Recusandae odio mollitia, nemo voluptatum, quidem neque ea officia incidunt fugiat, alias nulla id facere exercitationem excepturi quasi. Id, sunt.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!----- Templates ------->
-
-  <template id="movie-template">
-    <div class="movie">
-      <div class="movie-poster">
-        <img>
-      </div>
-      <h2 class="movie-title"></h2>
-      <div class="movie-options">
-        <i class="fa-regular fa-star" title="Favoritos"></i>
-        <i class="fa-solid fa-circle-info" title="Información"></i>
-      </div>
-    </div>
-  </template>
-
-  <template id="favorite-template">
-    <div class="favorite">
-      <div class="modal-poster">
-        <img>
-      </div>
-      <div class="modal-info">
-        <h3 class="modal-info__title">NOMBRE NOMBRE NOMBRE NOMBRE</h3>
-        <div class="modal-info__extras">
-          <span class="modal-info__year">2022</span>
-          <span class="modal-minyear">13+</span>
-          <span class="modal-info__time">120min</span>
-        </div>
-        <p class="modal-info__desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, corporis. Recusandae odio mollitia, nemo voluptatum, quidem neque ea officia incidunt fugiat, alias nulla id facere exercitationem excepturi quasi. Id, sunt.
-        </p>
-      </div>
-    </div>
-  </template>
-  <script src="./index.js" type="module"></script>
+  <!-- <script src="./index.js" type="module"></script> -->
 </body>
 </html>

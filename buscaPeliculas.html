@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--fontawesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!--stylesheet-->
+  <link rel="stylesheet" href="./styles.css">
+  <title>Practica 2</title>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="./img/logo.png" alt="logo">
+        <a href="#">find<span>Movies</span></a>
+      </div>
+      <div class="search">
+        <input type="search" name="title-movie" placeholder="ingrese título a buscar... ">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <div class="options">
+        <img class="favorite-icon" src="./img/list.png" alt="favorite" title="Tus favoritos">
+        <img src="./img/logout.png" alt="logout" title="Salir">
+        <i class="fa-solid fa-magnifying-glass" title="Buscar"></i>
+      </div>
+    </nav>
+    <p class="msjError"></p>
+  </header>
+
+  <!-------- movies -------->
+
+  <section class="result-movies">
+    <h2 class="sub-title">Tus resultados</h2>
+    <div class="container-movie">
+    </div>
+  </section>
+
+  <!---------- modal ------------>
+  <section class="info-modal">
+    <div class="modal">
+      <div class="modal-poster">
+        <img>
+      </div>
+      <div class="modal-info">
+        <h3 class="modal-info__title"></h3>
+        <div class="modal-info__extras">
+          <span class="modal-info__year"></span>
+          <span class="modal-minyear"></span>
+          <span class="modal-info__time"></span>
+        </div>
+        <p class="modal-info__desc"></p>
+        <p class="modal-info__actors"></p>
+      </div>
+    </div>
+  </section>
+
+  <!------- Favorites --------->
+  <section class="favorites">
+    
+    <div class="container-favorites">
+      <span class="fa-solid fa-times"></span>
+      <h2 class="sub-title">Tus favoritos: <span class="cantidad-favoritos"></span></h2>
+    </div>
+  </section>
+
+
+  <!----- Templates ------->
+
+  <template id="movie-template">
+    <div class="movie">
+      <div class="movie-poster">
+        <img>
+      </div>
+      <h2 class="movie-title"></h2>
+      <div class="movie-options">
+        <i class="fa-regular fa-star" title="Agrega favoritos"></i>
+        <!-- <i id="star-select" class="fa-solid fa-star" title="Quitar favoritos"></i> -->
+        <i class="fa-solid fa-circle-info" title="Información"></i>
+      </div>
+    </div>
+  </template>
+
+
+  <template id="favorite-template">
+    <div class="favorite">
+      <div class="favorite-poster">
+        <img>
+      </div>
+      <div class="favorite-info">
+        <h3 class="favorite-info__title"></h3>
+        <div class="favorite-options">
+          <i class="fa-solid fa-circle-info" title="Información"></i>
+          <i class="fa-solid fa-trash-can"></i>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script src="./index.js" type="module"></script>
+</body>
+</html>

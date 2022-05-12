@@ -1,11 +1,11 @@
 "use strict"
 
+//busca data según el tiítulo ingresado
 const getDataMovie = async (titleMovie) => {
   try{
     const response = await fetch(`http://www.omdbapi.com/?apikey=cef468ad&s=${titleMovie}`);
     if(!response.ok) throw new Error(`${response.status} - ${response.statusText}`);
     let data = await response.json();
-    console.log(data)
     return data.Search;
   }
   catch (error) {
@@ -13,6 +13,7 @@ const getDataMovie = async (titleMovie) => {
   }
 }
 
+//busca la data por el id enviado
 const getMovieForId =  async(idMovie) => {
   try {
     let response = await fetch(`http://www.omdbapi.com/?apikey=cef468ad&i=${idMovie}`);
