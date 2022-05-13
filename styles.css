@@ -111,7 +111,7 @@ section{
 
 .form{
   margin: 10rem auto;
-  width: 40rem;
+  width: 30rem;
   background: rgba(0,0,0,0.9);
   border: 1px solid white;
   padding: 1rem;
@@ -123,7 +123,14 @@ section{
   padding: 1rem;
   margin-bottom: 1rem;
   border-bottom: .1rem solid white;
-  /* border-radius: 1rem; */
+}
+
+.form-group.error{
+  border-bottom: 1px solid red;
+}
+
+.form-group.error input::placeholder{
+  color: red;
 }
 
 .form-group input{
@@ -143,10 +150,40 @@ section{
   letter-spacing: .1rem;
 }
 
+.form-group .sub-title{
+  margin: 2rem;
+  display: block;
+}
+
+.gallery-users{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-users__item{
+  width: 20rem;
+}
+
+.gallery-users__item img{
+  width: 100%;
+  opacity: .3;
+  transition: all .5s ease;
+}
 
 
+.gallery-users__item img.active{
+  opacity: 1;
+  transform: scale(1.1);
+}
 
-
+.info-form{
+  color: white;
+  font-size: 1rem;
+  font-weight: bolder;
+  letter-spacing: .1rem;
+  text-align: center;
+}
 
 /*==========header========*/
 
