@@ -85,7 +85,7 @@ const listenerResult = () => {
         setFavorite(element);
         element.classList.add("active");
         element.setAttribute("title", "Quitar favoritos");
-        document.querySelector("header .options .favorite-icon").classList.add("active");
+        /* document.querySelector("header .options .favorite-icon").classList.add("active"); */
       }
     }
 

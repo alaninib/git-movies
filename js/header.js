@@ -85,6 +85,7 @@ const listenerHeader = () => {
   })
 
   closeSessionIcon.addEventListener("click", e => {
+    e.stopPropagation();
     optionMenu.classList.remove("active");
     setCloseSessionUser();
   });

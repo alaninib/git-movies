@@ -7,7 +7,6 @@ import { notSelectFavorite, getOpenSessionUser } from "./resultManage.js";
 
 const favorites = document.querySelector(".favorites");
 const cantidadFavoritos = document.querySelector(".cantidad-favoritos");
-const favoriteIcon = document.querySelector("header .options .favorite-icon");
 let userIdSessionOpen;
 let favoritesMovies = [];
 
@@ -19,7 +18,6 @@ const getUserIdSession = () => {
 
 //envia a pintar las peliculas guardadas con anterioridad
 const sendToPaint = (favoritesMovieUser) => {
-  favoriteIcon.classList.add("active");
   favoritesMovieUser.forEach(movieFavorite => paintFavorites(movieFavorite))
 }
 
@@ -56,11 +54,6 @@ const deleteItemFavorito = (idMovie) => {
   removeNodoItem(idMovie);
   notSelectFavorite(idMovie);
   setCountFavoritos();
-  //si no queda ningun favorito, se desactiva la vista del icono favoritos (header) y de la section favorites
-  if(favoritesMovies.length < 1) {
-    favorites.classList.remove("active");
-    favoriteIcon.classList.remove("active");
-  };
 }
 
 //determina el numero de favoritos agregados

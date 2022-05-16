@@ -62,7 +62,6 @@ section{
 }
 
 .btn{
-  /* display: inline-block; */
   width: 100%;
   height: 4rem;
   margin: 1rem auto;
@@ -311,11 +310,11 @@ nav{
   transform: translateY(0) scale(1);
 }
 
- .options .favorite-icon{
+/*  .options .favorite-icon{
   display: none;
-}
+} */
 
-.options .favorite-icon.active{
+.options .favorite-icon{
   display: inline-block;
 }
 

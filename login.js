@@ -41,8 +41,8 @@ const isUserExist = (dataUser) => {
 
 //
 const userActive = () => {
-  let dataUser = setDataUser();
-  let isUser = isUserExist(dataUser);
+  const dataUser = setDataUser();
+  const isUser = isUserExist(dataUser);
   let userActiveLogin;
 
   if(!isUser){
