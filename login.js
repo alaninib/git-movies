@@ -1,6 +1,10 @@
 "use strict"
 
-import { getUserLogedInTime, saveUserLogin, getAllUserLogin } from "./js/helpers/storage.js";
+import { 
+  getUserLogedInTime, 
+  saveUserLogin, 
+  getAllUserLogin, 
+  openSession } from "./js/helpers/storage.js";
 
 const formulario = document.getElementById("form");
 const usuario = document.getElementById("usuario");
@@ -10,7 +14,8 @@ let allUser = [];
 
 //captura la imagen de login seleccionada
 const getImgLoginSelected = () => {
-  let imgSelected = formulario.querySelector(".gallery-users__item.active img").src;
+  let imgSelected = formulario.querySelector(".gallery-users__item img.active").src;
+  console.log(imgSelected)
   imgSelected = imgSelected.substring(imgSelected.indexOf("/img"), imgSelected.length);
   return imgSelected;
 }
@@ -22,7 +27,6 @@ const setDataUser = () => {
   for(let item of formData){
     userDataObj[item[0]] = item[1];
   }
-  userDataObj["img"] = getImgLoginSelected();
   userDataObj["id"] = Date.now();
   return userDataObj;
 }
@@ -31,22 +35,28 @@ const setDataUser = () => {
 const isUserExist = (dataUser) => {
   let {usuario, password} = dataUser;
   let userExist = getUserLogedInTime(usuario, password)
-  if(userExist){
-    return userExist;
-  }
+  if(userExist) return userExist;
 }
+
 
 //
 const userActive = () => {
   let dataUser = setDataUser();
   let isUser = isUserExist(dataUser);
+  let userActiveLogin;
 
-  //si el usuario no existe lo guarda
   if(!isUser){
+    //si el usuario no existe lo guarda y configura variable para abrir session
     allUser = [...allUser, dataUser];
     saveUserLogin(allUser);
+    userActiveLogin = dataUser;
+  }else{
+    //si el usuario existe no guarda y configura variable para abrir session
+    userActiveLogin = isUser;
   }
-  sessionStorage.setItem("usuarioActivo", JSON.stringify(isUser))
+  userActiveLogin.img = getImgLoginSelected();
+  openSession(userActiveLogin);
+  window.location.href = "./paginas/buscaPeliculas.html"
 }
 
 //setea campo incorrecto
@@ -92,10 +102,15 @@ const validInput = () => {
 
 //activa imagen de login seleccionada
 const activeImgLogin = (image) => {
-  allImgLogin.forEach(item => item.classList.remove("active"));
+  allImgLogin.forEach(item => {
+    console.log(item);
+    item.classList.remove("active")
+    console.log(item);
+  });
   image.classList.add("active");
 }
 
+//eventos con escuchadores
 const listenerLogin = () => {
   //imagen de para login
   allImgLogin.forEach(item => {
@@ -112,6 +127,7 @@ const listenerLogin = () => {
   })
 }
 
+//setea la variable global "allUser" con los usuario que ya se han logeado
 const getAllUsersLogin = () => {
   let usersFromLocal = getAllUserLogin();
   if(usersFromLocal.length > 0){

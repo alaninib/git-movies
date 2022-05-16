@@ -3,23 +3,33 @@
 import { setModal } from "./modal.js";
 import { paintFavorites } from "./helpers/pain.js";
 import { saveFavorites, getFavoritesMovies } from "./helpers/storage.js";
-import { notSelectFavorite } from "./resultManage.js";
+import { notSelectFavorite, getOpenSessionUser } from "./resultManage.js";
 
 const favorites = document.querySelector(".favorites");
 const cantidadFavoritos = document.querySelector(".cantidad-favoritos");
 const favoriteIcon = document.querySelector("header .options .favorite-icon");
+let userIdSessionOpen;
 let favoritesMovies = [];
+
+//envia a pintar las peliculas guardadas con anterioridad
+const sendToPaint = (favoritesMovieUser) => {
+  favoriteIcon.classList.add("active");
+  favoritesMovieUser.forEach(movieFavorite => paintFavorites(movieFavorite))
+}
+
+//obtiene el id del usuario logueado
+const getUserIdSession = () => {
+  userIdSessionOpen = getOpenSessionUser().id;
+  return userIdSessionOpen;
+}
 
 //Trae las peliculas favoritas guardados en sesiones anteriores;
 const setInitialFavorites = () => {
-  favoritesMovies = getFavoritesMovies();
+  favoritesMovies = getFavoritesMovies(userIdSessionOpen);
   if(favoritesMovies.length > 0){
-    favoriteIcon.classList.add("active");
-    setCountFavoritos();
-    favoritesMovies.forEach(favorite => paintFavorites(favorite));
+    sendToPaint(favoritesMovies)
   }
 }
-
 
 //remueve el nodo de favorito
 const removeNodoItem = (idMovie) => {
@@ -44,7 +54,7 @@ const deleteItemFavorito = (idMovie) => {
 
 //determina el numero de favoritos agregados
 const setCountFavoritos = () => {
-  cantidadFavoritos.textContent = favoritesMovies.length;
+cantidadFavoritos.textContent = favoritesMovies.length;
 }
 
 //crea el favorito, lo envia a pintar, guardar en el localstorage y setea la cantidad de favoritos;
@@ -55,6 +65,7 @@ const setFavorite = (movie) => {
     poster: element.querySelector(".movie-poster img").src,
     title: element.querySelector(".movie-title").textContent
   }
+  movieObj["id_user"] = userIdSessionOpen;
   favoritesMovies = [...favoritesMovies, movieObj];
   paintFavorites(movieObj);
   saveFavorites(favoritesMovies);
@@ -72,6 +83,10 @@ const listenerFavorites = () => {
   })
 }
 
-
-
-export { setFavorite, listenerFavorites, setInitialFavorites, deleteItemFavorito};
+export { 
+  setInitialFavorites, 
+  getUserIdSession,
+  setFavorite, 
+  listenerFavorites, 
+  deleteItemFavorito,
+};

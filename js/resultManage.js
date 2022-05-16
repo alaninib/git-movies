@@ -5,10 +5,18 @@ import { setFavorite, deleteItemFavorito } from "./favoritos.js";
 import { getDataMovie } from "./helpers/getMovies.js";
 import { paintMovie, cleanContanerMovie } from "./helpers/pain.js";
 import { setError } from "./header.js";
-import { getFavoritesMovies } from "./helpers/storage.js";
+import { getFavoritesMovies, getOpenSesion } from "./helpers/storage.js";
 
 
 const containerMovie = document.querySelector(".container-movie");
+let dataUserLogin;
+
+//trae la informacion del usuaio logeado
+const getOpenSessionUser = () => {
+  dataUserLogin = getOpenSesion();
+  return dataUserLogin;
+}
+
 
 //En el resultado de la búsqueda, desmarca el ícono add-favorito de la pelicula que fue eliminada de favoritos
 const notSelectFavorite = (idMovie) => {
@@ -34,7 +42,9 @@ const validaCheckfavorite = (dataMovies) => {
   if(favoritesStorgage.length > 0){
     dataMovies.forEach(itemD => {
       favoritesStorgage.forEach(itemF => {
-        if(itemD.imdbID === itemF.id) checkFavorite(itemD.imdbID);
+        if(itemD.imdbID === itemF.id && itemF.id_user.toString() === dataUserLogin.id.toString()){
+          checkFavorite(itemD.imdbID);
+        }
       })
     })
   }
@@ -77,4 +87,9 @@ const listenerResult = () => {
   })
 }
 
-export { listenerResult, getDataMovies, notSelectFavorite };
+export { 
+  getOpenSessionUser,
+  getDataMovies, 
+  notSelectFavorite,
+  listenerResult, 
+ };
