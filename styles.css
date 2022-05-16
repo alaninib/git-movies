@@ -452,7 +452,7 @@ nav{
 }
 
 .fa-regular.fa-star.active{
-  color: yellow;
+  color: red;
 }
 
 .fa-circle-info{
@@ -463,7 +463,7 @@ nav{
 .fa-regular.fa-star:hover,
 .fa-solid.fa-star:hover,
 .fa-circle-info:hover{
-  text-shadow: 0 0 1rem rgba(255,255,255,0.9);
+  text-shadow: 0 0 1rem rgba(255,0,0,0.9);
 }
 
 /*============ modal ==========*/

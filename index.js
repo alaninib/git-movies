@@ -14,6 +14,6 @@ const setMain = (
     sendToPaintUserLogin();
     listenerResult();
     listenerHeader();
-    listenerModal();
     listenerFavorites();
+    listenerModal();
 })()

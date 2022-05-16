@@ -16,11 +16,8 @@ const saveFavorites = (favoritesMovies) => {
 }
 
 //toma las peliculas favoritas
-const getFavoritesMovies = (idUser = null) => {
+const getFavoritesMovies = () => {
   let favoriteMovies = JSON.parse(localStorage.getItem("favoritesMovies")) || [];
-  if(idUser){
-    favoriteMovies = favoriteMovies.filter(movie => movie.id_user.toString() === idUser.toString())
-  }
   return favoriteMovies
 }
 
@@ -52,9 +49,16 @@ const openSession = (userActiveLogin) => {
   sessionStorage.setItem("usuarioActivo", JSON.stringify(userActiveLogin))
 }
 
+
+//trae los datos del usuario que inicio sesion
 const getOpenSesion = () => {
-  let openSesion = JSON.parse(sessionStorage.getItem("usuarioActivo"));
+  let openSesion = JSON.parse(sessionStorage.getItem("usuarioActivo")) || [];
   return openSesion;
+}
+
+//limpia la sessionStorage
+const closeSession = () => {
+  sessionStorage.clear();
 }
 
 export { 
@@ -66,5 +70,6 @@ export {
   getUserLogedInTime, 
   getAllUserLogin, 
   openSession,
-  getOpenSesion
+  getOpenSesion,
+  closeSession
 };

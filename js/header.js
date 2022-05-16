@@ -1,6 +1,6 @@
 "use strict"
 
-import { getDataMovies, getOpenSessionUser } from "./resultManage.js";
+import { getDataMovies, getOpenSessionUser, setCloseSessionUser } from "./resultManage.js";
 import { paintUserProfile } from "./helpers/pain.js";
 
 const lupaNav = document.querySelector("header .options .fa-magnifying-glass");
@@ -11,10 +11,11 @@ const favoriteIcon = document.querySelector(".favorite-icon");
 const favorites = document.querySelector(".favorites");
 const userProfile = document.querySelector(".user-profile");
 const optionMenu = document.querySelector("header nav .user-profile .options");
+const closeSessionIcon = document.querySelector(".close-session-icon");
 let titleToSearch = document.querySelector("header .search input");
 
 
-//pinta el usuario logueado
+//trae los datos del usuario logueado y los pinta
 const sendToPaintUserLogin = () => {
   paintUserProfile(getOpenSessionUser());
 }
@@ -83,6 +84,10 @@ const listenerHeader = () => {
     optionMenu.classList.toggle("active");
   })
 
+  closeSessionIcon.addEventListener("click", e => {
+    optionMenu.classList.remove("active");
+    setCloseSessionUser();
+  });
 }
 
 export { listenerHeader, setError, sendToPaintUserLogin };
