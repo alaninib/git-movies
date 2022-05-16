@@ -5,6 +5,7 @@ const movieTemplate = document.getElementById("movie-template").content;
 const favoriteTemplate = document.getElementById("favorite-template").content;
 const containerMovie = document.querySelector(".container-movie");
 const favoritesContainer = document.querySelector(".container-favorites");
+const userProfile = document.querySelector("header .user-profile");
 let modal = document.querySelector(".info-modal .modal");
 let fragment = document.createDocumentFragment();
 
@@ -54,4 +55,16 @@ const paintFavorites = (favoriteItem) => {
   favoritesContainer.appendChild(fragment);
 }
 
-export { paintMovie, paintModal, paintFavorites, cleanContanerMovie };
+const paintUserProfile = (userData) => {
+  userProfile.dataset.id = userData.id;
+  userProfile.querySelector("img").setAttribute("src", `${userData.img}`);
+  userProfile.querySelector(".user-profile__name").textContent = userData.usuario;
+}
+
+export { 
+  paintMovie, 
+  paintModal, 
+  paintFavorites, 
+  cleanContanerMovie,
+  paintUserProfile
+};

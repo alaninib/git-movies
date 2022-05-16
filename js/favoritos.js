@@ -3,23 +3,42 @@
 import { setModal } from "./modal.js";
 import { paintFavorites } from "./helpers/pain.js";
 import { saveFavorites, getFavoritesMovies } from "./helpers/storage.js";
-import { notSelectFavorite } from "./resultManage.js";
+import { notSelectFavorite, getOpenSessionUser } from "./resultManage.js";
 
 const favorites = document.querySelector(".favorites");
 const cantidadFavoritos = document.querySelector(".cantidad-favoritos");
-const favoriteIcon = document.querySelector("header .options .favorite-icon");
+let userIdSessionOpen;
 let favoritesMovies = [];
 
-//Trae las peliculas favoritas guardados en sesiones anteriores;
+//obtiene el id del usuario logeado
+const getUserIdSession = () => {
+  userIdSessionOpen = getOpenSessionUser().id;
+  return userIdSessionOpen;
+}
+
+//envia a pintar las peliculas guardadas con anterioridad
+const sendToPaint = (favoritesMovieUser) => {
+  favoritesMovieUser.forEach(movieFavorite => paintFavorites(movieFavorite))
+}
+
+
+//trae peliculas favoritas de usuario
+const getMovieFavoriteUser = () => {
+  let userFavoritesMovies = favoritesMovies.filter(movie => (
+    movie.id_user.toString() === userIdSessionOpen.toString()
+  ))
+  return userFavoritesMovies;
+}
+
+
+//Trae todas las peliculas favoritas
 const setInitialFavorites = () => {
   favoritesMovies = getFavoritesMovies();
   if(favoritesMovies.length > 0){
-    favoriteIcon.classList.add("active");
+    sendToPaint(getMovieFavoriteUser());
     setCountFavoritos();
-    favoritesMovies.forEach(favorite => paintFavorites(favorite));
   }
 }
-
 
 //remueve el nodo de favorito
 const removeNodoItem = (idMovie) => {
@@ -35,16 +54,11 @@ const deleteItemFavorito = (idMovie) => {
   removeNodoItem(idMovie);
   notSelectFavorite(idMovie);
   setCountFavoritos();
-  //si no queda ningun favorito, se desactiva la vista del icono favoritos (header) y de la section favorites
-  if(favoritesMovies.length < 1) {
-    favorites.classList.remove("active");
-    favoriteIcon.classList.remove("active");
-  };
 }
 
 //determina el numero de favoritos agregados
 const setCountFavoritos = () => {
-  cantidadFavoritos.textContent = favoritesMovies.length;
+  cantidadFavoritos.textContent = getMovieFavoriteUser().length;
 }
 
 //crea el favorito, lo envia a pintar, guardar en el localstorage y setea la cantidad de favoritos;
@@ -55,6 +69,7 @@ const setFavorite = (movie) => {
     poster: element.querySelector(".movie-poster img").src,
     title: element.querySelector(".movie-title").textContent
   }
+  movieObj["id_user"] = userIdSessionOpen;
   favoritesMovies = [...favoritesMovies, movieObj];
   paintFavorites(movieObj);
   saveFavorites(favoritesMovies);
@@ -72,6 +87,10 @@ const listenerFavorites = () => {
   })
 }
 
-
-
-export { setFavorite, listenerFavorites, setInitialFavorites, deleteItemFavorito};
+export { 
+  setInitialFavorites, 
+  getUserIdSession,
+  setFavorite, 
+  listenerFavorites, 
+  deleteItemFavorito,
+};

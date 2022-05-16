@@ -11,19 +11,39 @@
   <title>Peliculas</title>
 </head>
 <body>
-  <section>
-    <form>
-      <div class="form-group">
-        <input type="text" class="user" name="user" id="user" placeholder="ingrse usuario..." required>
-      </div>
-      <div class="form-group">
-        <input type="password" class="pass" name="password" id="password" required>
+  <section class="form-login">
+    <form id="form" class="form">
+      <h1 class="title">
+        Inicie sesion
+        <p class="info-form">usuario y password son requeridos.</p>
+      </h1>
+      <div class="content">
+        <div class="form-group">
+          <input type="text" class="user" name="usuario" id="usuario" placeholder="Ingrese usuario...">
+        </div>
+        <div class="form-group">
+          <input type="password" class="pass" name="password" id="password" placeholder="Ingrese password...">
+        </div>
+        <div class="form-group">
+          <h3 class="sub-title">Imagen para ingresar:</h3>
+          <div class="gallery-users">
+            <div class="gallery-users__item">
+              <img class="active" src="./img/login/ring.png" alt="ring">
+            </div>
+            <div class="gallery-users__item">
+              <img src="./img/login/star.png" alt="star">
+            </div>
+            <div class="gallery-users__item">
+              <img src="./img/login/hogwarts.png" alt="hogwarts">
+            </div>
+          </div>
+        </div>
       </div>
       <button class="btn" type="submit">Ingresar</button>
     </form>
 
   </section>
 
-  <!-- <script src="./index.js" type="module"></script> -->
+  <script src="./login.js" type="module"></script>
 </body>
 </html>
