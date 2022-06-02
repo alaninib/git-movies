@@ -16,8 +16,9 @@ const getOpenSessionUser = () => {
   dataUserLogin = getOpenSesion();
   if(dataUserLogin.length < 1){
     setCloseSessionUser();
+  }else{
+    return dataUserLogin;
   }
-  return dataUserLogin;
 }
 
 //borra los datos de sessionStorage

@@ -15,7 +15,6 @@ let allUser = [];
 //captura la imagen de login seleccionada
 const getImgLoginSelected = () => {
   let imgSelected = formulario.querySelector(".gallery-users__item img.active").src;
-  console.log(imgSelected)
   imgSelected = imgSelected.substring(imgSelected.indexOf("/img"), imgSelected.length);
   return imgSelected;
 }
@@ -33,20 +32,20 @@ const setDataUser = () => {
 
 //valida si usario ya se ha logeado en el tiempo
 const isUserExist = (dataUser) => {
-  let {usuario, password} = dataUser;
-  let userExist = getUserLogedInTime(usuario, password)
+  const {usuario, password} = dataUser;
+  const userExist = getUserLogedInTime(usuario, password)
   if(userExist) return userExist;
 }
 
 
-//
+//valida existencia de usuario para abir sesión;
 const userActive = () => {
   const dataUser = setDataUser();
   const isUser = isUserExist(dataUser);
   let userActiveLogin;
 
   if(!isUser){
-    //si el usuario no existe lo guarda y configura variable para abrir session
+    //si el usuario no existe, lo guarda y configura variable para abrir session
     allUser = [...allUser, dataUser];
     saveUserLogin(allUser);
     userActiveLogin = dataUser;
@@ -134,6 +133,7 @@ const getAllUsersLogin = () => {
     allUser = getAllUserLogin();
   }
 }
+
 
 const mainLogin = (
   () => {
