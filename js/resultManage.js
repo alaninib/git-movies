@@ -11,7 +11,7 @@ import { getFavoritesMovies, getOpenSesion, closeSession } from "./helpers/stora
 const containerMovie = document.querySelector(".container-movie");
 let dataUserLogin;
 
-//trae la informacion del usuaio logeado
+//trae la informacion del usuaio logeado, a la misma ves la pasa a favoritos 
 const getOpenSessionUser = () => {
   dataUserLogin = getOpenSesion();
   if(dataUserLogin.length < 1){
@@ -77,7 +77,7 @@ const listenerResult = () => {
     //add favorites;
     let element = e.target;
     if(element.classList.contains("fa-star")){
-      //si la pelicula ya existe en favoritos, se sacará de la lista de favoritos;
+      //si la pelicula ya existe en favoritos (fa-start active), se sacará de la lista de favoritos;
       if(element.classList.contains("active")){
         element.setAttribute("title", "Agrega favoritos");
         deleteItemFavorito(element.dataset.id)
