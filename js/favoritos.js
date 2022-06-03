@@ -10,10 +10,19 @@ const cantidadFavoritos = document.querySelector(".cantidad-favoritos");
 let userIdSessionOpen;
 let favoritesMovies = [];
 
-//obtiene el id del usuario logeado
+//obtiene el id del usuario logeado y configura la variable (global);
 const getUserIdSession = () => {
   userIdSessionOpen = getOpenSessionUser().id;
   return userIdSessionOpen;
+}
+
+//Trae todas las peliculas favoritas y configura la variable (global)
+const setInitialFavorites = () => {
+  favoritesMovies = getFavoritesMovies();
+  if(favoritesMovies.length > 0){
+    sendToPaint(getMovieFavoriteUser());
+    setCountFavoritos();
+  }
 }
 
 //envia a pintar las peliculas guardadas con anterioridad
@@ -21,23 +30,12 @@ const sendToPaint = (favoritesMovieUser) => {
   favoritesMovieUser.forEach(movieFavorite => paintFavorites(movieFavorite))
 }
 
-
 //trae peliculas favoritas de usuario
 const getMovieFavoriteUser = () => {
   let userFavoritesMovies = favoritesMovies.filter(movie => (
     movie.id_user.toString() === userIdSessionOpen.toString()
   ))
   return userFavoritesMovies;
-}
-
-
-//Trae todas las peliculas favoritas
-const setInitialFavorites = () => {
-  favoritesMovies = getFavoritesMovies();
-  if(favoritesMovies.length > 0){
-    sendToPaint(getMovieFavoriteUser());
-    setCountFavoritos();
-  }
 }
 
 //remueve el nodo de favorito

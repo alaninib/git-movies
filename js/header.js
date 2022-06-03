@@ -15,7 +15,7 @@ const closeSessionIcon = document.querySelector(".close-session-icon");
 let titleToSearch = document.querySelector("header .search input");
 
 
-//trae los datos del usuario logueado y los pinta
+//trae los datos del usuario logueado y los pinta en el header
 const sendToPaintUserLogin = () => {
   paintUserProfile(getOpenSessionUser());
 }
