@@ -15,6 +15,7 @@ let dataUserLogin;
 const getOpenSessionUser = () => {
   dataUserLogin = getOpenSesion();
   if(dataUserLogin.length < 1){
+    //Si no existen usuarios llama a la funcion setCloseSessionUser();, para redireccionar al login;
     setCloseSessionUser();
   }else{
     return dataUserLogin;
